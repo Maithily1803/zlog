@@ -12,8 +12,8 @@ export default function Home({ posts, search }) {
       <Navbar />
 
       <section className="hero">
-        <h1>Inside Design: Stories and Interviews</h1>
-        <p>Discover the latest in design thinking, product stories, and creative interviews.</p>
+        <h1>Zlog: Stories and Perspectives</h1>
+        <p>Ideas on technology, design, culture and the way we work.</p>
         <SearchBar defaultValue={search} />
       </section>
 
@@ -49,7 +49,7 @@ export default function Home({ posts, search }) {
       </main>
 
       <footer className="footer">
-        <p>© {new Date().getFullYear()} Inside Design. Built with Next.js.</p>
+        <p>© {new Date().getFullYear()} Zlog. Built with Next.js.</p>
       </footer>
     </div>
   )
@@ -61,8 +61,12 @@ export async function getServerSideProps({ query, req }) {
   const host = req.headers.host
   const url = `${protocol}://${host}/api/posts${search ? `?search=${search}` : ''}`
 
-  const res = await fetch(url)
-  const posts = await res.json()
-
-  return { props: { posts, search } }
+  try {
+    const res = await fetch(url)
+    if (!res.ok) return { props: { posts: [], search } }
+    const posts = await res.json()
+    return { props: { posts, search } }
+  } catch {
+    return { props: { posts: [], search } }
+  }
 }

@@ -4,8 +4,7 @@ import { useRouter } from 'next/router'
 export default function Navbar() {
   const router = useRouter()
 
-  async function logout() {
-    await fetch('/api/auth/login', { method: 'DELETE' }).catch(() => {})
+  function logout() {
     document.cookie = 'token=; Max-Age=0; Path=/'
     router.push('/login')
   }
@@ -13,7 +12,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="nav-inner">
-        <Link href="/" className="logo">✦ Inside Design</Link>
+        <Link href="/" className="logo">Zlog</Link>
         <div className="nav-links">
           <Link href="/">Home</Link>
           <Link href="/login" className="btn-outline">Admin</Link>
