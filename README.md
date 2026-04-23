@@ -1,4 +1,36 @@
-# Zlog - Project on Blog
+# Zlog - A Project on Blog
+
+### Homepage
+<p align="center">
+  <img src="./assets/pg1.png" width="700" />
+</p>
+
+### Listing page
+<p align="center">
+  <img src="./assets/pg2.png" width="700" />
+</p>
+
+### Post Page
+<p align="center">
+  <img src="./assets/pg3.png" width="700" />
+</p>
+
+### Login 
+<p align="center">
+  <img src="./assets/login.png" width="700" />
+</p>
+
+### Create & Edit Post
+<p align="center">
+  <img src="./assets/create.png" width="500" />
+  <img src="./assets/edit.png" width="500" />
+</p>
+
+### Dashboard  
+<p align="center">
+  <img src="./assets/dashboard.png" width="700" />
+</p>
+
 
 ## Tech Stack
  
@@ -12,14 +44,16 @@
 ---
 ## Working of CRUD
  
-All data lives in a MongoDB `posts` collection. The API routes in `pages/api/posts/` handle everything:
 **Read (GET)**
 1) `GET/api/posts` fetches all posts, it supports `?search=` query for title/tag filtering using MongoDB `$or` with `RegExp`
 2) `GET/api/posts/[id]` fetches a single post by ID.
+
 **Create (POST)**
 1) `POST /api/posts` creates a new post but requires a valid JWT cookie to proceed.
+
 **Update (PUT)**
 1) `PUT /api/posts/[id]` updates a post by ID. It is JWT-protected.
+
 **Delete (DELETE)**
 1) `DELETE /api/posts/[id]` deletes a post and it also JWT-protected.
 
@@ -27,8 +61,6 @@ All data lives in a MongoDB `posts` collection. The API routes in `pages/api/pos
 ----
 ## JWT overview
  
-Auth lives in `lib/auth.js` and works in the following way:
-
 1. When admin clicks `/login` and put username + password
 2. `POST/api/auth/login` checks credentials against hardcoded values in `lib/auth.js` (`admin` / `admin123`)
 3. If it is valid, a JWT will be signed using `JWT_SECRET` from `.env.local` and set as an **HttpOnly cookie** so that  JS can't touch it
@@ -44,11 +76,14 @@ Auth lives in `lib/auth.js` and works in the following way:
 4) Fonts: Georgia (serif) for headings  & Helvetica Neue for body.
  
 ---
-## Challenges & Key Learnings
+## Challenges & Learnings
 
 1) Connecting to MongoDB without opening too many requests.
+
 Fix: Used `isConnected` flag in `lib/db.js` which skipped connecting if its already connected.
+
 2) Authentication flow across middleware.
+
 Learnt: Middleware can only check for the cookie's existence and actual JWT verification has to happen inside the API route itself.
 
  
