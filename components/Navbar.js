@@ -12,7 +12,9 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="nav-inner">
-        <Link href="/" className="logo">Zlog</Link>
+        <Link href="/" className="logo">
+          <span className="logo-z">Z</span>log
+        </Link>
         <div className="nav-links">
           <Link href="/">Home</Link>
           <Link href="/login" className="btn-outline">Admin</Link>

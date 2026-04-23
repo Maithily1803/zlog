@@ -21,7 +21,16 @@ export default function PostPage({ post }) {
       <Navbar />
       <main className="container post-detail">
         <Link href="/" className="back-link">← Back to all posts</Link>
-        {post.coverImage && <img src={post.coverImage} alt={post.title} className="detail-img" />}
+        {post.coverImage && (
+          <img
+            src={post.coverImage}
+            alt={post.title}
+            className="detail-img"
+            referrerPolicy="no-referrer"
+            crossOrigin="anonymous"
+            onError={e => { e.target.style.display = 'none' }}
+          />
+        )}
         <span className="card-meta">{post.author} • {date}</span>
         <h1>{post.title}</h1>
         <div className="card-tags">

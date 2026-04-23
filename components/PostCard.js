@@ -7,7 +7,15 @@ export default function PostCard({ post }) {
 
   return (
     <div className="post-card">
-      {post.coverImage && <img src={post.coverImage} alt={post.title} className="card-img" />}
+      {post.coverImage && (
+        <img
+          src={post.coverImage}
+          alt={post.title}
+          className="card-img"
+          referrerPolicy="no-referrer"
+          onError={e => { e.target.style.display = 'none' }}
+        />
+      )}
       <div className="card-body">
         <span className="card-meta">{post.author} • {date}</span>
         <h3 className="card-title">

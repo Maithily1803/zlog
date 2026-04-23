@@ -27,7 +27,7 @@ export default function AdminDashboard() {
       <Navbar />
       <main className="container admin-page">
         <div className="admin-header">
-          <h2>Admin Dashboard</h2>
+          <h2>Dashboard</h2>
           <div>
             <Link href="/admin/new" className="btn-primary">+ New Post</Link>
             <button onClick={logout} className="btn-outline" style={{ marginLeft: '10px' }}>Logout</button>

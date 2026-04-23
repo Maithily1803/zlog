@@ -27,7 +27,7 @@ export default function Login() {
       <Navbar />
       <main className="container login-page">
         <div className="login-box">
-          <h2>Admin Login</h2>
+          <h2>ADMIN LOGIN</h2>
           {error && <p className="error">{error}</p>}
           <form onSubmit={handleSubmit}>
             <input

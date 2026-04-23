@@ -13,7 +13,7 @@ export default function Home({ posts, search }) {
 
       <section className="hero">
         <h1>Zlog: Stories and Perspectives</h1>
-        <p>Ideas on technology, design, culture and the way we work.</p>
+        <p>Ideas on fitness, career and lifestyle.</p>
         <SearchBar defaultValue={search} />
       </section>
 
@@ -25,8 +25,17 @@ export default function Home({ posts, search }) {
             <h2 className="section-title">Recent blog posts</h2>
             <div className="featured-grid">
               <div className="featured-main">
-                {featured.coverImage && <img src={featured.coverImage} alt={featured.title} />}
-                <span className="card-meta">{featured.author} • {new Date(featured.createdAt).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                {featured.coverImage && (
+                  <img
+                    src={featured.coverImage}
+                    alt={featured.title}
+                    referrerPolicy="no-referrer"
+                    onError={e => { e.target.style.display = 'none' }}
+                  />
+                )}
+                <span className="card-meta">
+                  {featured.author} • {new Date(featured.createdAt).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}
+                </span>
                 <h2><a href={`/posts/${featured._id}`}>{featured.title}</a></h2>
                 <p>{featured.content.slice(0, 140)}...</p>
                 <div className="card-tags">
@@ -49,7 +58,7 @@ export default function Home({ posts, search }) {
       </main>
 
       <footer className="footer">
-        <p>© {new Date().getFullYear()} Zlog. Built with Next.js.</p>
+        <p>© {new Date().getFullYear()} Zlog. Built with coffee. </p>
       </footer>
     </div>
   )
